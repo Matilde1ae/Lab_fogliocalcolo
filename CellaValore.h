@@ -12,9 +12,6 @@ using namespace std;
 class CellaValore : public Subject, public Cella {
 public:
     CellaValore(const string & nomeCella, int dimensione, int v) : Cella (nomeCella,dimensione), valore (v) {}
-
-
-
     void setValore (int v) {
         this->valore=v;
         notify ();
