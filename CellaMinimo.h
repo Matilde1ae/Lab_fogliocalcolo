@@ -21,7 +21,7 @@ public:
                 }
             }
         }
-        cout<<"Nome cella :"<<nomeCella<<"Minimo della cella: "<<valoreCalcolato<<endl;
+        //cout<<"Nome cella :"<<nomeCella<<"Minimo della cella: "<<valoreCalcolato<<endl;
     }
     void update () override {
         if (celle.empty ()) {
@@ -34,7 +34,7 @@ public:
                 }
             }
         }
-        cout<<"Nome cella :"<<nomeCella<<"Minimo della cella: "<<valoreCalcolato<<endl;
+       // cout<<"Nome cella :"<<nomeCella<<"Minimo della cella: "<<valoreCalcolato<<endl;
     }
 };
 #endif //UNTITLED43_CELLAMINIMO_H

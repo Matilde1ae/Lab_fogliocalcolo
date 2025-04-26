@@ -8,6 +8,7 @@
 #include "Observer.h"
 #include "Cella.h"
 #include "CellaValore.h"
+#include <ncurses.h>
 using namespace std;
 class CellaFormula : public Cella, public Observer {
 public:
@@ -33,8 +34,11 @@ public:
         return valoreCalcolato;
     }
 
-    void showResult () const {
-       cout << "Valore calcolato :" << valoreCalcolato << endl;
+    //void showResult () const {
+    //   cout << "Valore calcolato :" << valoreCalcolato << endl;
+    //}
+    void showResult(int y) const {
+        mvprintw(y, 2, "Valore calcolato %s: %d", nomeCella.c_str(), valoreCalcolato);
     }
 protected:
     int valoreCalcolato;

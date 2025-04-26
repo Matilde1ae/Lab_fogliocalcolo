@@ -8,6 +8,7 @@
 #include <list>
 #include "Cella.h"
 #include "Subject.h"
+#include <ncurses.h>
 using namespace std;
 class CellaValore : public Subject, public Cella {
 public:
@@ -19,9 +20,12 @@ public:
     int getValore () const override {
         return valore;
     }
-    void show () const override {
-        cout<<"Valore :"<<valore<<endl;
+    //void show () const override {
+      //  cout<<"Valore :"<<valore<<endl;
         //return valore;
+    //}
+    void show(int y) const override {
+        mvprintw(y, 2, "Valore cella %s: %d", nomeCella.c_str(), valore);
     }
     void subscribe (Observer * o) override {
         observers.push_back (o);

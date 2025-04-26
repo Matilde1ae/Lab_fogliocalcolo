@@ -16,7 +16,7 @@ public:
             valore+= c->getValore();
         }
         valoreCalcolato = valore;
-        cout << "Nome cella: " << nomeCella << "Somma" << valore << endl;
+        //cout << "Nome cella: " << nomeCella << "Somma" << valore << endl;
     }
 
     void update () override {
@@ -25,7 +25,7 @@ public:
             valore+= c->getValore();
         }
         valoreCalcolato = valore;
-        cout << "Nome cella: " << nomeCella << "Somma aggiornata :" << valore << endl;
+        //cout << "Nome cella: " << nomeCella << "Somma aggiornata :" << valore << endl;
     }
 };
 #endif //UNTITLED43_CELLASOMMA_H
