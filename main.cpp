@@ -25,7 +25,7 @@ void stampaStato(vector<CellaValore*>& celle, CellaSomma* somma, CellaMedia* med
 }
 
 int main () {
-    initscr();     // inizializza ncurses
+    initscr();
     cbreak();
     noecho();
     curs_set(FALSE);
@@ -49,9 +49,9 @@ int main () {
     a->setValore(5);
     stampaStato(celle, somma, media, massimo, minimo);
 
-    // Fine
+
     getch();
-    endwin();      // chiude ncurses
+    endwin();
 
     delete a;
     delete b;
