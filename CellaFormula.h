@@ -15,7 +15,7 @@ public:
                                                                                            celle(celle), valoreCalcolato (0) {
         attach();
     }
-    ~CellaFormula(){
+    ~CellaFormula() {
         detach();
     }
     void attach () override {
@@ -34,7 +34,7 @@ public:
     }
 
     void showResult () const {
-        cout << "Valore calcolato :" << valoreCalcolato << endl;
+       cout << "Valore calcolato :" << valoreCalcolato << endl;
     }
 protected:
     int valoreCalcolato;

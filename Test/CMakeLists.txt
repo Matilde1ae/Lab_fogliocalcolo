@@ -7,4 +7,4 @@ include_directories(${gtest_SOURCE_DIR}/include
                     ${gtest_SOURCE_DIR})
 set(SOURCE_TEST_FILES runAllTests.cpp TestMedia.cpp TestMassimo.cpp TestMinimo.cpp TestSomma.cpp CelleFixture.cpp)
 add_executable(runCellsTest ${SOURCE_TEST_FILES})
-target_link_libraries(runCellsTest core gtest gtest_main)
+target_link_libraries(runCellsTest core gtest gtest_main ncurses)

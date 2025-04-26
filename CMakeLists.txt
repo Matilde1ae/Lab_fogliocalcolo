@@ -17,3 +17,9 @@ set (SOURCE_FILES main.cpp
 add_executable(untitled43 main.cpp)
 add_library(core ${SOURCE_FILES})
 target_link_libraries(untitled43 core)
+
+find_package(Curses REQUIRED)
+include_directories(${CURSES_INCLUDE_DIR})
+
+find_library(NCURSES_LIB ncurses)
+target_link_libraries(untitled43 ${NCURSES_LIB} core)

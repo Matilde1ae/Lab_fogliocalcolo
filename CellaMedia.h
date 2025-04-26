@@ -18,9 +18,9 @@ public:
             for (Cella * c: celle){
                 somma += c->getValore();
             }
-            valoreCalcolato=somma;
+            valoreCalcolato=somma/celle.size();
         }
-           cout<<"Nome della cella"<<nomeCella<<"Media"<<valoreCalcolato<<endl;
+        cout<<"Nome della cella"<<nomeCella<<"Media"<<valoreCalcolato<<endl;
     }
     void update () override {
         if (celle.empty ()){
@@ -32,7 +32,7 @@ public:
             }
             valoreCalcolato=somma/celle.size ();
         }
-        cout<<"Nome della cella :"<<nomeCella<<"Media aggiornata:"<<valoreCalcolato<<endl;
+       cout<<"Nome della cella :"<<nomeCella<<"Media aggiornata:"<<valoreCalcolato<<endl;
     }
 };
 #endif //UNTITLED43_CELLAMEDIA_H

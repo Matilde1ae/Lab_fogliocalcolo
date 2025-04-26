@@ -21,6 +21,7 @@ public:
     }
     void show () const override {
         cout<<"Valore :"<<valore<<endl;
+        //return valore;
     }
     void subscribe (Observer * o) override {
         observers.push_back (o);
