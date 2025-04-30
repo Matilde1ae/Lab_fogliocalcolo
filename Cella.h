@@ -9,14 +9,13 @@
 using namespace std;
 class Cella {
 public:
-    Cella (const string & n, int d) : nomeCella (n), dimensione (d) {}
+    Cella (const string & n, int r, int c) : nomeCella (n), riga (r),colonna (c)  {} //inserire colonna e riga
    // virtual void show () const {
        // cout<<"Titolo cella: "<<nomeCella<<"e di dimensione"<<dimensione<<endl;
     //}
    virtual void show(int y) const {
-       mvprintw(y, 2, "Titolo cella: %s di dimensione %d", nomeCella.c_str(), dimensione);
+       mvprintw(y, 2, "Titolo cella: %s di dimensione %d", nomeCella.c_str(), riga, colonna);
    }
-
     const string &getNomeCella() const {
         return nomeCella;
     }
@@ -25,6 +24,6 @@ public:
     virtual ~Cella () {}
 protected:
     string nomeCella;
-    int dimensione;
+    int riga,colonna;
 };
 #endif //UNTITLED43_CELLA_H

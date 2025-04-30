@@ -6,6 +6,7 @@
 #include "CellaMassimo.h"
 #include "CellaMinimo.h"
 #include "CellaMedia.h"
+#include "FoglioCalcolo.h"
 #include <ncurses.h>
 using namespace std;
 void stampaStato(vector<CellaValore*>& celle, CellaSomma* somma, CellaMedia* media, CellaMassimo* massimo, CellaMinimo* minimo) {
@@ -35,11 +36,17 @@ int main () {
     CellaValore *c = new CellaValore("C", 1, 30);
     vector<CellaValore *> celle = {a, b, c};
 
-    CellaSomma * somma = new CellaSomma("Somma", 1, celle);
+   CellaSomma * somma;
+   /*
     CellaMedia * media = new CellaMedia("Media", 1, celle);
     CellaMassimo * massimo = new CellaMassimo("Massimo", 1, celle);
     CellaMinimo * minimo = new CellaMinimo("Minimo", 1, celle);
-
+*/
+    FoglioCalcolo * f;
+    f-> addCelleValore (a);
+    f-> addCelleValore(b);
+    f-> addCelleValore(c);
+    somma = f->getSomma();
 
     stampaStato(celle, somma, media, massimo, minimo);
 

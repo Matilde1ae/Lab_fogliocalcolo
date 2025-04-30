@@ -12,13 +12,14 @@
 using namespace std;
 class CellaFormula : public Cella, public Observer {
 public:
-    CellaFormula (const string & nomeCella, int dimensione, vector <CellaValore*> &celle) : Cella(nomeCella, dimensione),
+    CellaFormula (const string & nomeCella, int riga, int colonna) : Cella(nomeCella, riga, colonna),
                                                                                            celle(celle), valoreCalcolato (0) {
         attach();
     }
     ~CellaFormula() {
         detach();
     }
+    //metodi per aggiungere e togliere le celle,togliere dimensione
     void attach () override {
         for (auto c : celle) {
             c->subscribe(this);
@@ -40,6 +41,10 @@ public:
     void showResult(int y) const {
         mvprintw(y, 2, "Valore calcolato %s: %d", nomeCella.c_str(), valoreCalcolato);
     }
+    void setValoreCalcolato (int valore) {
+        valoreCalcolato=valore;
+    }
+
 protected:
     int valoreCalcolato;
     vector <CellaValore *> &celle;

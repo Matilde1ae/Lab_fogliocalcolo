@@ -15,7 +15,7 @@ public:
             valoreCalcolato=0;
         }else {
             int somma = 0;
-            for (Cella * c: celle){
+            for (Cella * c: celle){ //mettere auto
                 somma += c->getValore();
             }
             valoreCalcolato=somma/celle.size();

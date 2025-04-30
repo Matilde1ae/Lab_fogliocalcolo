@@ -9,8 +9,8 @@
 using namespace std;
 class CellaMassimo : public CellaFormula {
 public:
-    CellaMassimo (const string & nomeCella, int dimensione,vector<CellaValore*>& celle):
-            CellaFormula (nomeCella,dimensione, celle){
+    CellaMassimo (const string & nomeCella, int riga, int colonna,vector<CellaValore*>& celle):
+            CellaFormula (nomeCella,riga, colonna, celle){
         if (celle.empty ()) {
             valoreCalcolato = 0;
         }else{
