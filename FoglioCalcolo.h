@@ -5,30 +5,71 @@
 #ifndef UNTITLED43_FOGLIOCALCOLO_H
 #define UNTITLED43_FOGLIOCALCOLO_H
 #include <iostream>
-#include <list>
 #include "CellaValore.h"
-#include "CellaFormula.h"
+#include "Observer.h"
 #include "CellaSomma.h"
+#include "CellaMassimo.h"
+#include "CellaMinimo.h"
+#include "CellaMedia.h"
 using namespace std;
-class FoglioCalcolo {
+class FoglioCalcolo : public Observer {  // TODO aggiungere test
 public:
-    void addCelleValore (CellaValore * cella) {
+    FoglioCalcolo (const string & n) : nomeFoglio (n) {
+        somma = new CellaSomma ("Somma");
+        media = new CellaMedia ("Media");
+        minimo = new CellaMinimo ("Minimo");
+        massimo = new CellaMassimo ("Massimo");
+    }
+    ~FoglioCalcolo(){
+        detach();
+        delete somma;
+        delete media;
+        delete massimo;
+        delete minimo;
+    }
+    void attach () override {
+        for (auto cella : celleSelezionate) {
+            cella->subscribe(this);
+        }
+    }
+    void detach () override {
+        for (auto cella : celleSelezionate) {
+            cella->unsubscribe(this);
+        }
+    }
+    void addCellaValore (CellaValore * cella) {
         celleSelezionate.push_back(cella);
     }
     void removeCellaValore (CellaValore * cella) {
-        celleSelezionate.remove (cella);
+        auto it = find (celleSelezionate.begin (), celleSelezionate.end (), cella);
+        if (it != celleSelezionate.end()){
+            celleSelezionate.erase(it);
+        }
+    }
+    void update () override {
+        somma->calcola(celleSelezionate);
+        media->calcola (celleSelezionate);
+        minimo->calcola (celleSelezionate);
+        massimo->calcola (celleSelezionate);
     }
     CellaSomma * getSomma () {
-        CellaSomma * somma = new CellaSomma ("A", 1, 1);
-        int valore=0;
-        for (Cella * c :celleSelezionate) {
-            valore+= c->getValore();
-        }
-        somma-> setValoreCalcolato (valore);
         return somma;
     }
-
+    CellaMedia * getMedia () {
+        return media;
+    }
+    CellaMinimo * getMinimo () {
+        return minimo;
+    }
+    CellaMassimo * getMassimo () {
+        return massimo;
+    }
 private:
-    list <CellaValore *> celleSelezionate;
+    string nomeFoglio;
+    vector <CellaValore *> celleSelezionate;
+    CellaSomma * somma;
+    CellaMassimo * massimo;
+    CellaMinimo * minimo;
+    CellaMedia * media;
 };
 #endif //UNTITLED43_FOGLIOCALCOLO_H
