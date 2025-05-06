@@ -9,7 +9,61 @@
 
 class CelleFixture : public ::testing ::Test {
 protected:
-    void setup (){
+    void SetUp() override {
+        a = new CellaValore("A1", 10);
+        b = new CellaValore("B1", 20);
+        c = new CellaValore("C1", 30);
+        celle = {a, b, c};
+    }
+
+    void TearDown() override {
+        delete a;
+        delete b;
+        delete c;
+    }
+
+    CellaValore *a;
+    CellaValore *b;
+    CellaValore *c;
+    vector<CellaValore *> celle;
+};
+
+TEST_F(CelleFixture, TestMassimo) {
+    CellaMassimo massimo("Massimo");
+    a->setValore(15);
+    b->setValore(20);
+    c->setValore(25);
+    massimo.calcola(celle);
+    EXPECT_EQ(massimo.getValore(), 25);
+}
+
+TEST_F(CelleFixture, TestMedia) {
+    CellaMedia media("Media");
+    a->setValore(10);
+    b->setValore(15);
+    c->setValore(20);
+    media.calcola(celle);
+    EXPECT_EQ(media.getValore(), 15);
+}
+
+TEST_F(CelleFixture, TestMinimo) {
+    CellaMinimo minimo("Minimo");
+    a->setValore(20);
+    b->setValore(25);
+    c->setValore(30);
+    minimo.calcola(celle);
+    EXPECT_EQ(minimo.getValore(), 20);
+}
+
+TEST_F(CelleFixture, TestSomma) {
+    CellaSomma somma("Somma");
+    a->setValore(5);
+    b->setValore(10);
+    c->setValore(15);
+    somma.calcola(celle);
+    EXPECT_EQ(somma.getValore(), 30);
+}
+    /*void setup (){
         CellaValore * a = new CellaValore("A1", 1,10);
         CellaValore * b = new CellaValore ("B1", 1, 20);
         CellaValore * c = new CellaValore ("C1", 1,30);
@@ -53,4 +107,4 @@ TEST_F(CelleFixture, TestSomma){
     b->setValore (10);
     c->setValore (15);
     EXPECT_EQ (somma.getValore(),30);
-}
+}*/

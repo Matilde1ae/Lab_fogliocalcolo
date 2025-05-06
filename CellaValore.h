@@ -12,9 +12,9 @@
 using namespace std;
 class CellaValore : public Subject, public Cella {
 public:
-    CellaValore(const string & nomeCella, int dimensione, int v) : Cella (nomeCella,dimensione), valore (v) {}
+    CellaValore(const string & nomeCella, int v) : Cella (nomeCella), valore (v) {}
     void setValore (int v) {
-        this->valore=v;
+        valore=v;
         notify ();
     }
     int getValore () const override {
@@ -24,8 +24,8 @@ public:
       //  cout<<"Valore :"<<valore<<endl;
         //return valore;
     //}
-    void show(int y) const override {
-        mvprintw(y, 2, "Valore cella %s: %d", nomeCella.c_str(), valore);
+    void show (int & riga) const override {
+        mvprintw(riga ++, 0, "NomeCella: %s, Valore: %d", nomeCella.c_str (), valore);
     }
     void subscribe (Observer * o) override {
         observers.push_back (o);

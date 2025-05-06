@@ -9,32 +9,21 @@
 using namespace std;
 class CellaMinimo : public CellaFormula {
 public:
-    CellaMinimo (const string & nomeCella, int riga, int colonna,vector<CellaValore*>& celle):
-            CellaFormula (nomeCella,riga, colonna, celle){
+    CellaMinimo (const string & nomeCella):
+            CellaFormula (nomeCella){}
+    void calcola (const vector <CellaValore *> celle){
         if (celle.empty ()) {
             valoreCalcolato = 0;
         }else{
-            valoreCalcolato= celle[0]->getValore ();
-            for (auto & it:celle){
-                if (it->getValore()<valoreCalcolato){
-                    valoreCalcolato=it->getValore();
+            int min = celle[0]->getValore ();
+            for (auto c:celle){
+                if (c->getValore()<min){
+                    min=c->getValore();
                 }
+                valoreCalcolato= min;
             }
         }
         //cout<<"Nome cella :"<<nomeCella<<"Minimo della cella: "<<valoreCalcolato<<endl;
-    }
-    void update () override {
-        if (celle.empty ()) {
-            valoreCalcolato = 0;
-        }else{
-            valoreCalcolato= celle[0]->getValore ();
-            for (auto & it:celle){
-                if (it->getValore()<valoreCalcolato){
-                    valoreCalcolato=it->getValore();
-                }
-            }
-        }
-       // cout<<"Nome cella :"<<nomeCella<<"Minimo della cella: "<<valoreCalcolato<<endl;
     }
 };
 #endif //UNTITLED43_CELLAMINIMO_H

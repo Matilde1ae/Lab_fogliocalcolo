@@ -9,32 +9,22 @@
 using namespace std;
 class CellaMassimo : public CellaFormula {
 public:
-    CellaMassimo (const string & nomeCella, int riga, int colonna,vector<CellaValore*>& celle):
-            CellaFormula (nomeCella,riga, colonna, celle){
+    CellaMassimo (const string & nomeCella):
+            CellaFormula (nomeCella){}
+    void calcola (const vector <CellaValore *> celle){
         if (celle.empty ()) {
             valoreCalcolato = 0;
         }else{
-            valoreCalcolato= celle[0]->getValore ();
-            for (auto & it:celle){
-                if (it->getValore()>valoreCalcolato){
-                    valoreCalcolato=it->getValore();
+            int max = celle[0]->getValore ();
+            for (auto c:celle){
+                if (c->getValore()>max){
+                    max=c->getValore();
                 }
+                valoreCalcolato= max;
             }
         }
-       //cout<<"Nome cella :"<<nomeCella<<"Massimo della cella: "<<valoreCalcolato<<endl;
+        // cout<<"Nome cella :"<<nomeCella<<"Minimo della cella: "<<valoreCalcolato<<endl;
     }
-    void update () override {
-        if (celle.empty ()) {
-            valoreCalcolato = 0;
-        }else{
-            valoreCalcolato= celle[0]->getValore ();
-            for (auto & it:celle){
-                if (it->getValore()>valoreCalcolato){
-                    valoreCalcolato=it->getValore();
-                }
-            }
-        }
-        //cout<<"Nome cella :"<<nomeCella<<"Massimo della cella: "<<valoreCalcolato<<endl;
-    }
+
 };
 #endif //UNTITLED43_CELLAMASSIMO_H

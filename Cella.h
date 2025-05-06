@@ -9,12 +9,12 @@
 using namespace std;
 class Cella {
 public:
-    Cella (const string & n, int r, int c) : nomeCella (n), riga (r),colonna (c)  {} //inserire colonna e riga
+    Cella (const string & n) : nomeCella (n) {} //costruttore cella
    // virtual void show () const {
        // cout<<"Titolo cella: "<<nomeCella<<"e di dimensione"<<dimensione<<endl;
     //}
-   virtual void show(int y) const {
-       mvprintw(y, 2, "Titolo cella: %s di dimensione %d", nomeCella.c_str(), riga, colonna);
+   virtual void show(int & riga) const {
+       mvprintw(riga++, 0, "Titolo cella: %s", nomeCella.c_str());
    }
     const string &getNomeCella() const {
         return nomeCella;
@@ -24,6 +24,5 @@ public:
     virtual ~Cella () {}
 protected:
     string nomeCella;
-    int riga,colonna;
 };
 #endif //UNTITLED43_CELLA_H
