@@ -9,9 +9,9 @@
 using namespace std;
 class CellaMassimo : public CellaFormula {
 public:
-    CellaMassimo (const string & nomeCella):
+    explicit CellaMassimo (const string & nomeCella):
             CellaFormula (nomeCella){}
-    void calcola (const vector <CellaValore *> celle){
+    void calcola (const vector <CellaValore *> celle) override {
         if (celle.empty ()) {
             valoreCalcolato = 0;
         }else{

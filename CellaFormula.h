@@ -15,6 +15,7 @@ public:
     int getValore () const override {
         return valoreCalcolato;
     }
+    virtual void calcola (const vector <CellaValore *> celle) = 0;
 
     void showResult (int & riga) const {
         mvprintw (riga ++, 0, "Nome cella: %s, Valore Calcolato %d", nomeCella.c_str (),valoreCalcolato);

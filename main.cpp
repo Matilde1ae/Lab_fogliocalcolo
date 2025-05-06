@@ -14,7 +14,6 @@ void stampaStato( vector<CellaValore*>& celle,CellaSomma* somma, CellaMedia* med
     clear ();
     riga =0;
     mvprintw(riga++,0,"Stato inziale:");
-    //mvprintw(riga++,0,"Stato:");
 
     for (auto c : celle) {
         c->show(riga);
@@ -24,7 +23,6 @@ void stampaStato( vector<CellaValore*>& celle,CellaSomma* somma, CellaMedia* med
     media->showResult(riga);
     massimo->showResult(riga);
     minimo->showResult(riga);
-    //mvprintw(riga ++, 0,"%s","-----------" );
     mvprintw(riga ++,0, "Premi invio per continuare...");
     refresh ();
     getch();
@@ -41,16 +39,15 @@ int main () {
     CellaValore *c = new CellaValore("C", 30);
     vector < CellaValore * > celle = {a, b, c};
 
-    FoglioCalcolo *f = new FoglioCalcolo("Foglio");
+    FoglioCalcolo * f = new FoglioCalcolo("Foglio");
 
     f->addCellaValore(a);
     f->addCellaValore(b);
     f->addCellaValore(c);
     f->attach ();
-    //f->update (); //prima versione
 
     stampaStato(celle, f->getSomma(), f->getMedia(),f->getMassimo (),f->getMinimo(), riga);
-    f->update (); //seconda versione
+    f->update ();
     stampaStato(celle, f->getSomma(), f->getMedia(),f->getMassimo (),f->getMinimo(), riga);
 
 

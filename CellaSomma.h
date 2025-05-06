@@ -9,9 +9,9 @@
 using namespace std;
 class CellaSomma : public CellaFormula {
 public:
-    CellaSomma (const string & nomeCella):
+    explicit CellaSomma (const string & nomeCella):
     CellaFormula (nomeCella){}
-    void calcola (const vector<CellaValore *> &celle) {
+    void calcola (const vector<CellaValore *> celle) override {
         int somma = 0;
         for (Cella *c: celle) {
             somma += c->getValore();

@@ -9,9 +9,9 @@
 using namespace std;
 class CellaMinimo : public CellaFormula {
 public:
-    CellaMinimo (const string & nomeCella):
+    explicit CellaMinimo (const string & nomeCella):
             CellaFormula (nomeCella){}
-    void calcola (const vector <CellaValore *> celle){
+    void calcola (const vector <CellaValore *> celle) override {
         if (celle.empty ()) {
             valoreCalcolato = 0;
         }else{

@@ -12,7 +12,7 @@
 #include "CellaMinimo.h"
 #include "CellaMedia.h"
 using namespace std;
-class FoglioCalcolo : public Observer {  // TODO aggiungere test
+class FoglioCalcolo : public Observer {
 public:
     FoglioCalcolo (const string & n) : nomeFoglio (n) {
         somma = new CellaSomma ("Somma");

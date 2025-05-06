@@ -9,9 +9,9 @@
 using namespace std;
 class CellaMedia : public CellaFormula  {
 public:
-    CellaMedia (const string & nomeCella):  // FIXME explicit
+    explicit CellaMedia (const string & nomeCella):
             CellaFormula (nomeCella){}
-    void calcola (const vector <CellaValore *> celle) {  // FIXME metodo puramente virtuale in classe base
+    void calcola (const vector <CellaValore *> celle) override {
         if (celle.empty()) {
             valoreCalcolato = 0;
         } else {
